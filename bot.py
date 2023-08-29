@@ -25,14 +25,14 @@ def collides(pos: np.array, snakes: List[Snake]) -> bool:
     return False
 
 
-class ExampleBot(Bot):
+class helloFellowHumanPerson(Bot):
     """
     Moves randomly, but makes sure it doesn't collide with other snakes
     """
 
     @property
     def name(self):
-        return 'Greedy Gerard'
+        return 'hello fellow human person'
 
     @property
     def contributor(self):
