@@ -72,7 +72,8 @@ class bender(Bot):
         distance = []
         for move in moves:
             future_head = snake[0] + MOVE_VALUE_TO_DIRECTION[move]
-            distance.append (self._calculate_distance(future_head, candies[0]))
+            candy_distance = [self._calculate_distance(future_head, candy) for candy in candies]
+            distance.append (min(candy_distance))
             
         min_value_index = distance.index(min(distance))
         preferred_move = moves[min_value_index]
