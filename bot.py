@@ -26,9 +26,6 @@ def collides(pos: np.array, snakes: List[Snake]) -> bool:
 
 
 class bender(Bot):
-    """
-    Moves randomly, but makes sure it doesn't collide with other snakes
-    """
 
     @property
     def name(self):
@@ -40,7 +37,7 @@ class bender(Bot):
 
     def determine_next_move(self, snake: Snake, other_snakes: List[Snake], candies: List[np.array]) -> Move:
         moves = self._determine_possible_moves(snake, other_snakes[0])
-        return self.choose_move(moves)
+        return self.choose_move(moves, candies, snake)
 
     def _determine_possible_moves(self, snake, other_snake) -> List[Move]:
         """
@@ -62,8 +59,10 @@ class bender(Bot):
         else:
             return on_grid
 
-    def choose_move(self, moves: List[Move]) -> Move:
+    def choose_move(self, moves: List[Move], candies: List[np.array], snake:Snake) -> Move:
         """
         Randomly pick a move
         """
+        #snake.positions[0] 
+
         return choice(moves)
