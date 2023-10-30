@@ -53,7 +53,8 @@ class bender(Bot):
         # then avoid collisions with other snakes
         collision_free = [move for move in on_grid
                           if is_on_grid(snake[0] + MOVE_VALUE_TO_DIRECTION[move], self.grid_size)
-                          and not collides(snake[0] + MOVE_VALUE_TO_DIRECTION[move], [snake, other_snake])]
+                          and not collides(snake[0] + MOVE_VALUE_TO_DIRECTION[move], [snake, other_snake])
+                          and not collides(snake[0] + MOVE_VALUE_TO_DIRECTION[move]*3, [snake, snake])]
         if collision_free:
             return collision_free
         else:
