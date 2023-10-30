@@ -58,11 +58,22 @@ class bender(Bot):
             return collision_free
         else:
             return on_grid
+        
+    def _calculate_distance(self, point1, point2):
+        x1, y1 = point1
+        x2, y2 = point2
+        distance = np.sqrt((x2-x1)**2 + (y2-y1)**2)
+        return distance
 
     def choose_move(self, moves: List[Move], candies: List[np.array], snake:Snake) -> Move:
         """
         Randomly pick a move
         """
-        #snake.positions[0] 
-
-        return choice(moves)
+        distance = []
+        for move in moves:
+            future_head = snake[0] + MOVE_VALUE_TO_DIRECTION[move]
+            distance.append (self._calculate_distance(future_head, candies[0]))
+            
+        min_value_index = distance.index(min(distance))
+        preferred_move = moves[min_value_index]
+        return preferred_move
